@@ -1,0 +1,937 @@
+openapi: 3.0.3
+info:
+  title: ''
+  version: 0.0.0
+paths:
+  /api/cliente/:
+    get:
+      operationId: api_cliente_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cliente'
+          description: ''
+    post:
+      operationId: api_cliente_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cliente'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Cliente'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Cliente'
+        required: true
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+          description: ''
+  /api/cliente/{id}/:
+    get:
+      operationId: api_cliente_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this cliente.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+          description: ''
+    put:
+      operationId: api_cliente_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this cliente.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cliente'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Cliente'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Cliente'
+        required: true
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+          description: ''
+    patch:
+      operationId: api_cliente_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this cliente.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCliente'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCliente'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCliente'
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+          description: ''
+    delete:
+      operationId: api_cliente_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this cliente.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/proyectos/:
+    get:
+      operationId: api_proyectos_list
+      parameters:
+      - in: query
+        name: id
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: nombre
+        schema:
+          type: string
+      - in: query
+        name: ubicacion
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProyectoInmobiliario'
+          description: ''
+    post:
+      operationId: api_proyectos_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProyectoInmobiliario'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProyectoInmobiliario'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProyectoInmobiliario'
+        required: true
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProyectoInmobiliario'
+          description: ''
+  /api/proyectos/{id}/:
+    get:
+      operationId: api_proyectos_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this proyecto inmobiliario.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProyectoInmobiliario'
+          description: ''
+    put:
+      operationId: api_proyectos_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this proyecto inmobiliario.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProyectoInmobiliario'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProyectoInmobiliario'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProyectoInmobiliario'
+        required: true
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProyectoInmobiliario'
+          description: ''
+    patch:
+      operationId: api_proyectos_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this proyecto inmobiliario.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProyectoInmobiliario'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProyectoInmobiliario'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProyectoInmobiliario'
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProyectoInmobiliario'
+          description: ''
+    delete:
+      operationId: api_proyectos_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this proyecto inmobiliario.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/schema/:
+    get:
+      operationId: api_schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - ckb
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - ug
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/token/:
+    post:
+      operationId: api_token_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+          description: ''
+  /api/token/refresh/:
+    post:
+      operationId: api_token_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+          description: ''
+  /api/unidad-propiedad/:
+    get:
+      operationId: api_unidad_propiedad_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnidadPropiedad'
+          description: ''
+    post:
+      operationId: api_unidad_propiedad_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnidadPropiedad'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UnidadPropiedad'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UnidadPropiedad'
+        required: true
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnidadPropiedad'
+          description: ''
+  /api/unidad-propiedad/{id}/:
+    get:
+      operationId: api_unidad_propiedad_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this unidad propiedad.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnidadPropiedad'
+          description: ''
+    put:
+      operationId: api_unidad_propiedad_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this unidad propiedad.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnidadPropiedad'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UnidadPropiedad'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UnidadPropiedad'
+        required: true
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnidadPropiedad'
+          description: ''
+    patch:
+      operationId: api_unidad_propiedad_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this unidad propiedad.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUnidadPropiedad'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUnidadPropiedad'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUnidadPropiedad'
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnidadPropiedad'
+          description: ''
+    delete:
+      operationId: api_unidad_propiedad_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this unidad propiedad.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - jwtAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Cliente:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        rut:
+          type: string
+          maxLength: 12
+        nombre:
+          type: string
+          maxLength: 100
+        apellido:
+          type: string
+          maxLength: 100
+        correo:
+          type: string
+          format: email
+          maxLength: 254
+        telefono:
+          type: string
+          maxLength: 20
+        fecha_creacion:
+          type: string
+          format: date-time
+          readOnly: true
+        unidad:
+          type: string
+          format: uuid
+          nullable: true
+      required:
+      - apellido
+      - correo
+      - fecha_creacion
+      - id
+      - nombre
+      - rut
+      - telefono
+    PatchedCliente:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        rut:
+          type: string
+          maxLength: 12
+        nombre:
+          type: string
+          maxLength: 100
+        apellido:
+          type: string
+          maxLength: 100
+        correo:
+          type: string
+          format: email
+          maxLength: 254
+        telefono:
+          type: string
+          maxLength: 20
+        fecha_creacion:
+          type: string
+          format: date-time
+          readOnly: true
+        unidad:
+          type: string
+          format: uuid
+          nullable: true
+    PatchedProyectoInmobiliario:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        nombre:
+          type: string
+          maxLength: 255
+        descripcion:
+          type: string
+        ubicacion:
+          type: string
+          maxLength: 255
+        fecha_inicio:
+          type: string
+          format: date
+        fecha_final:
+          type: string
+          format: date
+        estado:
+          type: string
+          maxLength: 50
+        fecha_creacion:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedUnidadPropiedad:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        numero_unidad:
+          type: string
+          maxLength: 100
+        tipo:
+          type: string
+          maxLength: 50
+        metraje_cuadrado:
+          type: number
+          format: double
+        precio_venta:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,10}(?:\.\d{0,2})?$
+        estado:
+          type: string
+          maxLength: 50
+        fecha_creacion:
+          type: string
+          format: date-time
+          readOnly: true
+        proyecto:
+          type: string
+          format: uuid
+    ProyectoInmobiliario:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        nombre:
+          type: string
+          maxLength: 255
+        descripcion:
+          type: string
+        ubicacion:
+          type: string
+          maxLength: 255
+        fecha_inicio:
+          type: string
+          format: date
+        fecha_final:
+          type: string
+          format: date
+        estado:
+          type: string
+          maxLength: 50
+        fecha_creacion:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - descripcion
+      - estado
+      - fecha_creacion
+      - fecha_final
+      - fecha_inicio
+      - id
+      - nombre
+      - ubicacion
+    TokenObtainPair:
+      type: object
+      properties:
+        username:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - password
+      - refresh
+      - username
+    TokenRefresh:
+      type: object
+      properties:
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          writeOnly: true
+      required:
+      - access
+      - refresh
+    UnidadPropiedad:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        numero_unidad:
+          type: string
+          maxLength: 100
+        tipo:
+          type: string
+          maxLength: 50
+        metraje_cuadrado:
+          type: number
+          format: double
+        precio_venta:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,10}(?:\.\d{0,2})?$
+        estado:
+          type: string
+          maxLength: 50
+        fecha_creacion:
+          type: string
+          format: date-time
+          readOnly: true
+        proyecto:
+          type: string
+          format: uuid
+      required:
+      - estado
+      - fecha_creacion
+      - id
+      - metraje_cuadrado
+      - numero_unidad
+      - precio_venta
+      - proyecto
+      - tipo
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,38 @@
+<h2>Nuevo Proyecto</h2>
+
+<form [formGroup]="form" (ngSubmit)="guardar()">
+  <div>
+    <label>Nombre:</label>
+    <input formControlName="nombre" />
+    <small *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched" style="color: red;">
+    El nombre es obligatorio
+  </small>
+  </div>
+  <div>
+    <label>Descripción:</label>
+    <textarea formControlName="descripcion"></textarea>
+  </div>
+  <div>
+    <label>Ubicación:</label>
+    <input formControlName="ubicacion" />
+    <small *ngIf="form.get('ubicacion')?.invalid && form.get('ubicacion')?.touched" style="color: red;">
+    La ubicación es obligatoria
+    </small>
+  </div>
+  <div>
+    <label>Fecha Inicio:</label>
+    <input type="date" formControlName="fecha_inicio" />
+    <small *ngIf="form.get('fecha_inicio')?.invalid && form.get('fecha_inicio')?.touched" style="color: red;">
+        Obligatorio
+    </small>
+  </div>
+  <div>
+    <label>Fecha Finalización:</label>
+    <input type="date" formControlName="fecha_finalizacion" />
+  </div>
+  <div>
+    <label>Estado:</label>
+    <input formControlName="estado" />
+  </div>
+  <button type="submit" [disabled]="form.invalid">Guardar</button>
+</form>
