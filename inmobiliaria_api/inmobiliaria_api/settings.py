@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'drf_spectacular',
     'proyectos',
     'django_filters',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -41,6 +42,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'inmobiliaria_api.urls'
@@ -71,7 +74,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DB_NAME', 'inmobiliaria'),
         'USER': os.getenv('DB_USER', 'postgres'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'admin'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'admin1234'),
         'HOST': os.getenv('DB_HOST', 'localhost'),
         'PORT': os.getenv('DB_PORT', '5432'),
     }
@@ -131,3 +134,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny'
     ],
 }
+
+CORS_ALLOWED_ORIGINS = [
+  "http://localhost:4200",
+]

@@ -32,4 +32,8 @@ export class ProyectoService {
     return this.http.post(this.apiUrl, data);
   }
 
+  eliminarProyecto(id: string) {
+    return this.http.delete(`${this.apiUrl}${id}/`);
+  }
+
 }

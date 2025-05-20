@@ -1,0 +1,80 @@
+<div class="inmobiliaria-container">
+  <div class="header">
+    <h1>Inmobiliaria Horizonte</h1>
+    <p>{{ id ? 'Editar Unidad' : 'Nueva Unidad' }}</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>{{ id ? 'Editar Unidad' : 'Nueva Unidad' }}</h2>
+      <p>Ingrese los datos de la unidad</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="guardar()" class="form-content">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="numero_unidad">Número</label>
+          <div class="input-with-icon">
+            <input id="numero_unidad" formControlName="numero_unidad" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="tipo">Tipo</label>
+          <div class="input-with-icon">
+            <input id="tipo" formControlName="tipo" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="estado">Estado</label>
+          <div class="input-with-icon">
+            <input id="estado" formControlName="estado" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="precio_venta">Precio</label>
+          <div class="input-with-icon">
+            <input id="precio_venta" type="number" formControlName="precio_venta" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="metraje_cuadrado">Metraje cuadrado</label>
+          <div class="input-with-icon">
+            <input id="metraje_cuadrado" formControlName="metraje_cuadrado" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="proyecto">Proyecto</label>
+          <div class="input-with-icon">
+            <select id="proyecto" formControlName="proyecto">
+              <option value="" disabled selected hidden>Selecciona un proyecto</option>
+              <option *ngFor="let p of proyectos" [value]="p.id">
+                {{ p.nombre }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <button type="submit" class="btn-primary" [disabled]="form.invalid">
+          Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card" style="margin-top: 2rem;">
+    <div class="card-header">
+      <h3>Proyectos cargados: {{ proyectos.length }}</h3>
+    </div>
+    <div class="form-content">
+      <pre>{{ proyectos | json }}</pre>
+    </div>
+  </div>
+</div>

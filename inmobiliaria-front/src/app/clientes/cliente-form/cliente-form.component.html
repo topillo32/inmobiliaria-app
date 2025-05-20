@@ -1,0 +1,83 @@
+<div class="inmobiliaria-container">
+  <div class="header">
+    <h1>Inmobiliaria Horizonte</h1>
+    <p>Gestión de Clientes</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>Registro de Cliente</h2>
+      <p>Ingrese los datos del cliente para la propiedad</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="guardar()" class="form-content">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="rut">RUT</label>
+          <div class="input-with-icon">
+            <input id="rut" formControlName="rut" />
+          </div>
+          <div class="error-message" *ngIf="form.get('rut')?.invalid && form.get('rut')?.touched">
+            RUT es requerido
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="correo">Correo</label>
+          <div class="input-with-icon">
+            <input id="correo" formControlName="correo" type="email" />
+          </div>
+          <div class="error-message" *ngIf="form.get('correo')?.invalid && form.get('correo')?.touched">
+            Correo electrónico inválido
+          </div>
+        </div>      
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <div class="input-with-icon">
+            <input id="nombre" formControlName="nombre" />
+          </div>          
+          <div class="error-message" *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched">
+            Nombre es requerido
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="apellido">Apellido</label>
+          <div class="input-with-icon">
+            <input id="apellido" formControlName="apellido" />
+          </div>          
+          <div class="error-message" *ngIf="form.get('apellido')?.invalid && form.get('apellido')?.touched">
+            Apellido es requerido
+          </div>
+        </div>
+      </div>
+
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <div class="input-with-icon">
+            <input id="telefono" formControlName="telefono" />
+          </div>
+          <div class="error-message" *ngIf="form.get('telefono')?.invalid && form.get('telefono')?.touched">
+            Teléfono es requerido
+          </div>
+        </div>
+      </div>
+
+      <input id="unidad_id" formControlName="unidad_id" [ngStyle]="{'display': 'none'}" class="hidden" />
+
+      <div class="card-footer">
+        <button type="button" class="btn-outline" (click)="guardar()">
+          Cambiar a modo {{ esEdicion ? 'creación' : 'edición' }}
+        </button>
+        <button type="submit" class="btn-primary" [disabled]="form.invalid">
+          {{ esEdicion ? 'Actualizar' : 'Crear' }} Cliente
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

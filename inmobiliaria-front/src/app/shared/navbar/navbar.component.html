@@ -1,0 +1,24 @@
+<nav class="menu-navegacion">
+  <div class="menu-container">
+    <!-- Logo y nombre de la inmobiliaria -->
+    <div class="logo-container">
+      <span class="logo-texto">Inmobiliaria Horizonte</span>
+    </div>
+
+    <!-- Botón de menú móvil -->
+    <button class="menu-toggle" (click)="toggleMenu()">
+      <i class="material-icons">{{ menuAbierto ? 'close' : 'menu' }}</i>
+    </button>
+
+    <!-- Menú de navegación -->
+    <ul class="menu-items" [class.menu-abierto]="menuAbierto">
+      <li *ngFor="let item of menuItems" 
+          [class.activo]="itemActivo === item.ruta"
+          (click)="seleccionarItem(item.ruta)">
+        <a href="{{item.ruta}}">
+          <span>{{ item.nombre }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -21,7 +21,7 @@ export class ProyectoFormComponent {
       descripcion: [''],
       ubicacion: ['', Validators.required],
       fecha_inicio: ['', Validators.required],
-      fecha_finalizacion: ['', Validators.required],
+      fecha_final: ['', Validators.required],
       estado: ['', Validators.required]
     });
   }

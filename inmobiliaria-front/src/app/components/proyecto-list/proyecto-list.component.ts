@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router'; 
 import { ProyectoService, Proyecto } from 'src/app/services/proyecto.service';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -24,10 +24,12 @@ export class ProyectoListComponent implements OnInit {
   }
 
   cargarProyectos(): void {
-    this.proyectoService.getProyectos(this.search, this.page).subscribe(res => {
-      this.proyectos = res.results;
-      this.totalPages = Math.ceil(res.count / 10);
-    });
+    this.proyectoService
+      .getProyectos(this.search, this.page)
+      .subscribe(data => {
+        console.log('array recibido:', data);
+        this.proyectos = data;
+      });
   }
 
   buscar(): void {
@@ -43,5 +45,18 @@ export class ProyectoListComponent implements OnInit {
   irANuevoProyecto(): void {
     this.router.navigate(['/proyectos/nuevo']);
   }
+
+  eliminarProyecto(id: string): void {
+    if (confirm('¿Estás seguro de que quieres eliminar este proyecto?')) {
+      this.proyectoService.eliminarProyecto(id).subscribe(() => {
+        this.cargarProyectos();
+      });
+    }
+  }
+
+  editarProyecto(id: string): void {
+    this.router.navigate(['/proyectos', id, 'editar']);
+  }
+
 
 }
